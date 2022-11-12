@@ -1,0 +1,14 @@
+<div class="app-tabs-wrapper">
+	<nav mat-tab-nav-bar [tabPanel]="tabPanel" mat-align-tabs = 'center'>
+		<a mat-tab-link *ngFor="let route of routes" [routerLink]="route.path"
+		routerLinkActive #rla="routerLinkActive"
+		[active]="rla.isActive">{{route.path | titlecase}}</a>
+	  </nav>
+<div class="content-wrapper">
+	<mat-tab-nav-panel #tabPanel class="tab-panel">
+		<router-outlet>
+		</router-outlet>
+	</mat-tab-nav-panel>
+</div>
+
+</div>

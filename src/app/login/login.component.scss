@@ -1,0 +1,56 @@
+
+@mixin card {
+	
+	border-radius: 5px;
+	box-shadow: 5px 5px 30px 1px rgba(0, 0, 0, 0.13);
+}
+
+.input-login, .input-password {
+
+	margin:10px 0;
+	width:100%;
+	
+	label {
+		display:block;
+		font-weight: bold;
+	}
+
+	input {
+		background-color: white;
+		
+		border: 1px solid rgba(0, 0, 0, 0.096);
+		border-radius: 3px;
+		
+		padding:8px 4px;
+		margin: 4px 0 8px 0;
+		
+		width:100%;
+		
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+.login-component {
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+
+
+.errors {
+	span {
+		color:red;
+		font-size:12px;
+	}
+}
+
+.login-form {
+	padding:24px;
+	@include card;
+
+	width:300px;
+}
+
