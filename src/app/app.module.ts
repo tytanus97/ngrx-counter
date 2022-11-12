@@ -1,3 +1,4 @@
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { PostsModule } from './posts/posts.module'
 import { appReducer } from './store/app.state'
 import { NgModule } from '@angular/core'
@@ -30,7 +31,9 @@ import { SharedModule } from './shared/shared.module'
 		AppRoutingModule,
 		CounterModule,
 		PostsModule,
-		SharedModule
+		SharedModule,
+		MatSnackBarModule
+
 	],
 	providers: [],
 	bootstrap: [AppComponent]

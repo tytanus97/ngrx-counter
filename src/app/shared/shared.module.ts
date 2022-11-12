@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common'
 import { LoaderComponent } from './ui/loader/loader.component'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
-
 @NgModule({
 	declarations: [
-		LoaderComponent
+		LoaderComponent,
 	],
 	imports: [
 		CommonModule,
-		MatProgressSpinnerModule
+		MatProgressSpinnerModule,
 	],
 	exports: [
 		LoaderComponent
