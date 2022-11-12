@@ -23,6 +23,5 @@ import { POST_STATE_NAME } from './state/posts.selector'
 export class PostsModule {
 
 	constructor() {
-		console.log('posts module')
 	}
 }

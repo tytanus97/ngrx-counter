@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module'
 import { CounterModule } from './counter/counter.module'
 import { WelcomeComponent } from './welcome/welcome.component'
+import { SharedModule } from './shared/shared.module'
 
 @NgModule({
 	declarations: [
@@ -24,11 +25,12 @@ import { WelcomeComponent } from './welcome/welcome.component'
 		CommonModule,
 		MatTabsModule,
 		EffectsModule.forRoot([]),
-		StoreModule.forRoot({}),
+		StoreModule.forRoot(appReducer),
 		BrowserAnimationsModule,
 		AppRoutingModule,
 		CounterModule,
-		PostsModule
+		PostsModule,
+		SharedModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

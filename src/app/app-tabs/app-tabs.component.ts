@@ -13,7 +13,6 @@ export class AppTabsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.routes = this.router.config.filter((route: Route) => route.path)
-		console.log(this.routes)
 	}
 
 }

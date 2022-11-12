@@ -12,16 +12,13 @@ export class CounterButtonsComponent {
 	constructor(private readonly store: Store<AppState>) { }
 
 	increment() {
-		console.log('increment')
 		this.store.dispatch(incrementAction())
 	}
 	decrement() {
-		console.log('decrement')
 		this.store.dispatch(decrementAction())
 
 	}
 	reset() {
-		console.log('reset')
 		this.store.dispatch(resetAction())
 	}
 }

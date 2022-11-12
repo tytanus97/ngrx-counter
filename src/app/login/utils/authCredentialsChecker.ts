@@ -9,7 +9,6 @@ export class AuthCredentialsChecker {
 	 * @param credentials
 	 */
 	checkCredentials(credentials: AuthCredentials): string {
-		console.log('check credits')
 
 		const user: UserCredentials = availableCredentials.find((credits: UserCredentials) => {
 			return credits.login.includes(credentials.login)

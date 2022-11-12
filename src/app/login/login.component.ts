@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { AppState } from '../store/app.state'
 import { AuthCredentials } from './utils/authCredentials'
 import { Store } from '@ngrx/store'
+import { setLoadingSpinner } from '../shared/state/shared.actions'
 
 @Component({
 	selector: 'app-login',
@@ -32,8 +33,7 @@ export class LoginComponent implements OnInit {
 			password
 		} as AuthCredentials
 
-		console.log('submit login', credentials)
-
+		this.store.dispatch(setLoadingSpinner({status: true}))
 		this.store.dispatch(loginStart({credentials}))
 	}
 
