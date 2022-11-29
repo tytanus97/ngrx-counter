@@ -5,5 +5,5 @@ export const AUTH_STATE_NAME = 'auth'
 const getAuthState = createFeatureSelector<AuthState>(AUTH_STATE_NAME)
 
 export const isAuthenticated = createSelector(getAuthState, (state) => {
-	return state.token && state.token.length
+	return !!(state.token && state.token.length)
 })

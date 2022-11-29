@@ -3,6 +3,9 @@
 		<a mat-tab-link *ngFor="let route of routes$ | async" [routerLink]="route.path"
 		routerLinkActive #rla="routerLinkActive"
 		[active]="rla.isActive">{{route.path | titlecase}}</a>
+		<div class="logout">
+			<img *ngIf="isAuthenticated$ | async" class="logout__icon" src="assets/icons/logout.svg" (click)="logout()"> 
+		</div>
 	  </nav>
 <div class="content-wrapper">
 	<mat-tab-nav-panel #tabPanel class="tab-panel">

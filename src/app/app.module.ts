@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module'
 import { CounterModule } from './counter/counter.module'
 import { WelcomeComponent } from './welcome/welcome.component'
 import { SharedModule } from './shared/shared.module'
+import { AuthEffects } from './login/state/auth.effect'
 
 @NgModule({
 	declarations: [
@@ -25,7 +26,7 @@ import { SharedModule } from './shared/shared.module'
 		BrowserModule,
 		CommonModule,
 		MatTabsModule,
-		EffectsModule.forRoot([]),
+		EffectsModule.forRoot([AuthEffects]),
 		StoreModule.forRoot(appReducer),
 		BrowserAnimationsModule,
 		AppRoutingModule,

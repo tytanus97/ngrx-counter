@@ -1,6 +1,6 @@
 import { setLoadingSpinner } from './../../shared/state/shared.actions'
 import { AuthService } from './../utils/auth.service'
-import { loginFail, loginStart, loginSuccess } from './auth.action'
+import { autoLogin, autoLoginFail, loginFail, loginStart, loginSuccess, logout } from './auth.action'
 import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { catchError, exhaustMap, finalize, from, map, of, tap } from 'rxjs'
@@ -8,6 +8,7 @@ import { AppState } from 'src/app/store/app.state'
 import { Store } from '@ngrx/store'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { Router } from '@angular/router'
+import { UserTokenLocalStorageService } from '../utils/userTokenLocalStorage.service'
 
 @Injectable()
 export class AuthEffects {
@@ -16,7 +17,8 @@ export class AuthEffects {
 		private readonly authService: AuthService,
 		private readonly store: Store<AppState>,
 		private readonly _snackBar: MatSnackBar,
-		private readonly router: Router) {
+		private readonly router: Router,
+		private readonly userTokenLocalStorageService: UserTokenLocalStorageService) {
 	}
 
 	login$ = createEffect(() => {
@@ -41,7 +43,26 @@ export class AuthEffects {
 	loginRedirect$ = createEffect(() => {
 		return this.actions$.pipe(ofType(loginSuccess),
 			tap((action) => {
+				this.userTokenLocalStorageService.persistUserToken(action.token)
 				this.router.navigate(['/'])
 			}))
+	}, { dispatch: false })
+
+
+	autoLogin$ = createEffect(() => {
+		return this.actions$.pipe(ofType(autoLogin), map((action) => {
+			const userToken = this.userTokenLocalStorageService.getUserToken()
+
+			return (userToken && userToken.length)
+				? loginSuccess({ token: userToken })
+				: autoLoginFail()
+		}))
+	})
+
+	logout$ = createEffect(() => {
+		return this.actions$.pipe(ofType(logout), map((action => {
+			this.userTokenLocalStorageService.removeToken()
+			this.router.navigate(['login'])
+		})))
 	}, {dispatch: false})
 }

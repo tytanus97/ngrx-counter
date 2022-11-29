@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { v4 } from 'uuid'
 import { AuthCredentials } from './authCredentials'
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class AuthCredentialsChecker {
 	/**
 	 * returns user token

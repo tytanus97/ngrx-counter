@@ -3,7 +3,7 @@ import { AuthCredentials } from './authCredentials'
 import { AuthCredentialsChecker } from './authCredentialsChecker'
 const LOGIN_DELAY = 5000
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class AuthService {
 
 	constructor(private readonly authCredentialsChecker: AuthCredentialsChecker) {}

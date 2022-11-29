@@ -4,6 +4,7 @@ import { Route, Router } from '@angular/router'
 import { Store } from '@ngrx/store'
 import { map, Observable } from 'rxjs'
 import { AppState } from '../store/app.state'
+import { logout } from '../login/state/auth.action'
 
 @Component({
 	selector: 'app-app-tabs',
@@ -12,6 +13,7 @@ import { AppState } from '../store/app.state'
 })
 export class AppTabsComponent implements OnInit {
 	routes$: Observable<Route[]>
+	isAuthenticated$: Observable<boolean>
 
 	constructor(private readonly router: Router,
 		private readonly store: Store<AppState>) {
@@ -26,5 +28,10 @@ export class AppTabsComponent implements OnInit {
 				return false
 			})
 		}))
+		this.isAuthenticated$ = this.store.select(isAuthenticated)
+	}
+
+	logout() {
+		this.store.dispatch(logout())
 	}
 }
